@@ -8,17 +8,20 @@ app = Flask(__name__)
 def show_login_form():
     return render_template('login_form.template.html')
 
+
 @app.route('/login', methods=["POST"])
 def process_login_form():
     print(request.form)
     username = request.form.get('username')
     password = request.form.get('password')
-    print("data received",username)
+    print("data received", username)
     return "Welcome, " + username
+
 
 @app.route('/calculate')
 def show_calculator_form():
     return render_template('calculator.template.html')
+
 
 @app.route('/calculate', methods=["POST"])
 def process_calculator_form():
@@ -32,6 +35,7 @@ def process_calculator_form():
 def show_bmi_form():
     return render_template('bmi.template.html')
 
+
 @app.route('/bmi', methods=["POST"])
 def bmi_calculator_form():
     print(request.form)
@@ -40,6 +44,16 @@ def bmi_calculator_form():
     bmi = weight / (height**2)
     return str(bmi)
 
+
+@app.route('/survey')
+def show_survey_form():
+    return render_template('survey.template.html')
+
+
+@app.route('/survey', methods=["POST"])
+def process_survey_form():
+    print(request.form)
+    return "data received"
 
 
 # "magic code" -- boilerplate
